@@ -1,6 +1,7 @@
 
 import './App.css';
 import List from './demo/list'
+import LifeCycle from './demo/lifrcycle'
 let datas = {
     family: {
         title: '家人',
@@ -35,9 +36,11 @@ let datas = {
  * 6.jsx不支持语句，只支持表达式（表达式是有返回值的是表达式）
  * 7.jsx:js+xml  语法糖
  */
+// static function getDerivedStateFromProps(props, state) {
 
+// }
 function App() {
-
+    let isShow = false;
     return (
         <div className="friend-list">
             {/* 内部渲染好友列表 */}
@@ -49,9 +52,11 @@ function App() {
                 </dl>)} */}
 
             {/* end */}
-
+            {isShow ? <div>
+                {Object.keys(datas).map((item, index) => <List key={index} data={datas[item]} ></List>)}
+            </div> : <LifeCycle data={datas}></LifeCycle>}
             {/* 组件部分的 */}
-            { Object.keys(datas).map((item, index) => <List key={index} data={datas[item]} ></List>)}
+            {/* <List data={datas}>123</List> */}
         </div>
     );
 }
